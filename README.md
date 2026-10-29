@@ -8,7 +8,7 @@ A web portal for a UK energy supplier's **day-ahead trading desk**. For every po
 | | |
 |---|---|
 | **Live app** | **https://kx7qwm.vercel.app** |
-| **Video walkthrough** | `<YOUTUBE_URL>` |
+| **Video walkthrough** | **https://youtu.be/swXA2p-Aubg** |
 | **Stack** | React + TypeScript (Vite, Recharts) · Python (FastAPI) · Docker · Vercel |
 | **Data** | Elexon BMRS: `FUELHH` (actual wind) and `WINDFOR` (wind forecasts), national level |
 
