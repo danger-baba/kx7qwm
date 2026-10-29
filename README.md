@@ -359,7 +359,7 @@ Analysis parameters (default cutoff, trailing window lengths, scope dates) are i
 
 ## 14. AI usage
 
-As the challenge permits, this project was developed with the assistance of an AI coding tool (Claude Code by Anthropic). It was used for domain research, implementation, tests and documentation. The design, analysis and results were reviewed and verified by running the application, the test suite and the independent Elexon cross-check. The application itself uses no AI.
+AI-assisted development tools were used while building this project, as permitted by the challenge. All results were verified with the test suite and the independent Elexon cross-check. The application itself uses no AI.
 
 ---
 
