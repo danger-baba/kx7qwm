@@ -146,3 +146,6 @@ th { position: sticky; top: 0; background: var(--surface); color: var(--text-2);
   .page-head h1 { font-size: 22px; }
 }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.legend-toggle { display: inline-flex; align-items: center; gap: 6px; background: none; border: 0; padding: 0; font-size: inherit; color: inherit; cursor: pointer; }
+.legend-toggle:hover { color: var(--text); }
+.legend-toggle[aria-pressed='false'] { opacity: 0.45; text-decoration: line-through; }

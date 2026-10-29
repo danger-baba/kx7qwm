@@ -41,17 +41,32 @@ export function Card({
   )
 }
 
-export type LegendItem = { label: string; color: string; kind?: 'line' | 'dashed' | 'box' | 'dot' }
+export type LegendItem = {
+  label: string
+  color: string
+  kind?: 'line' | 'dashed' | 'box' | 'dot'
+  /** When set, the item is a toggle button for its chart layer. */
+  onToggle?: () => void
+  on?: boolean
+}
 
 export function Legend({ items }: { items: LegendItem[] }) {
   return (
     <div className="legend">
-      {items.map((i) => (
-        <span key={i.label}>
-          <i className={`key ${i.kind ?? 'line'}`} style={{ background: i.color, color: i.color }} />
-          {i.label}
-        </span>
-      ))}
+      {items.map((i) => {
+        const key = <i className={`key ${i.kind ?? 'line'}`} style={{ background: i.color, color: i.color }} />
+        return i.onToggle ? (
+          <button key={i.label} className="legend-toggle" aria-pressed={i.on} onClick={i.onToggle} title="Show / hide">
+            {key}
+            {i.label}
+          </button>
+        ) : (
+          <span key={i.label}>
+            {key}
+            {i.label}
+          </span>
+        )
+      })}
     </div>
   )
 }

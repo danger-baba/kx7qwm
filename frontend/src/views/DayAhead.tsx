@@ -69,7 +69,7 @@ export default function DayAhead({ meta, cutoff }: { meta: Meta; cutoff: string 
 
       {error && <ErrorState message={error} />}
       {!data && loading && <Loading what="forecast" />}
-      {data && <DayContent data={data} layers={layers} c={c} dim={loading} />}
+      {data && <DayContent data={data} layers={layers} onToggle={toggle} c={c} dim={loading} />}
     </>
   )
 }
@@ -83,7 +83,19 @@ function Chip({ on, onClick, color, label, kind }: { on: boolean; onClick: () =>
   )
 }
 
-function DayContent({ data, layers, c, dim }: { data: DayAheadData; layers: Record<Layer, boolean>; c: ChartColors; dim: boolean }) {
+function DayContent({
+  data,
+  layers,
+  onToggle,
+  c,
+  dim,
+}: {
+  data: DayAheadData
+  layers: Record<Layer, boolean>
+  onToggle: (k: Layer) => void
+  c: ChartColors
+  dim: boolean
+}) {
   const s = data.summary
   const horizons = data.series.map((p) => p.horizonHours)
   const adjustedMWh = data.series.reduce((sum, p) => sum + p.adjusted, 0)
@@ -126,9 +138,9 @@ function DayContent({ data, layers, c, dim }: { data: DayAheadData; layers: Reco
         <Legend
           items={[
             { label: 'Decision forecast', color: c.forecast },
-            ...(layers.band ? [{ label: 'Likely range (P10–P90)', color: c.bandFill, kind: 'box' as const }] : []),
-            ...(layers.adjusted ? [{ label: 'Bias-adjusted forecast', color: c.adjusted, kind: 'dashed' as const }] : []),
-            ...(layers.actual && hasActual ? [{ label: 'Actual (known after delivery)', color: c.actual }] : []),
+            { label: 'Likely range (P10–P90)', color: c.bandFill, kind: 'box', on: layers.band, onToggle: () => onToggle('band') },
+            { label: 'Bias-adjusted forecast', color: c.adjusted, kind: 'dashed', on: layers.adjusted, onToggle: () => onToggle('adjusted') },
+            ...(hasActual ? [{ label: 'Actual (known after delivery)', color: c.actual, on: layers.actual, onToggle: () => onToggle('actual') }] : []),
           ]}
         />
         <ResponsiveContainer width="100%" height={340}>
