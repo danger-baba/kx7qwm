@@ -7,7 +7,7 @@ A web portal for a UK energy supplier's **day-ahead trading desk**. For every po
 
 | | |
 |---|---|
-| **Live app** | `<VERCEL_URL>` |
+| **Live app** | **https://kx7qwm.vercel.app** |
 | **Video walkthrough** | `<YOUTUBE_URL>` |
 | **Stack** | React + TypeScript (Vite, Recharts) · Python (FastAPI) · Docker · Vercel |
 | **Data** | Elexon BMRS: `FUELHH` (actual wind) and `WINDFOR` (wind forecasts), national level |
@@ -341,7 +341,7 @@ Analysis parameters (default cutoff, trailing window lengths, scope dates) are i
 | Only decisions made in January 2026 | Delivery days 2 Jan – 1 Feb 2026 (`config.py`) |
 | React frontend, Python backend | `frontend/` (React + TypeScript), `backend/` (FastAPI) |
 | Docker | `backend/Dockerfile`, `frontend/Dockerfile`, `docker-compose.yml` |
-| Deployed on Vercel or Heroku | `vercel.json`, `api/index.py`; live link at the top of this file |
+| Deployed on Vercel or Heroku | https://kx7qwm.vercel.app (`vercel.json`, `api/index.py`); auto-deploys on every push to `main` |
 | README: files and directories, how to start, app link | Sections 7, 8 and the header |
 | AI tool usage disclosed | Section 14 |
 
